@@ -5,10 +5,7 @@ import org.spring.thymeleafLayout.dto.BoardDto;
 import org.spring.thymeleafLayout.service.BoardSerivce;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,28 +15,37 @@ import java.util.List;
 public class BoardController {
 
     private final BoardSerivce boardSerivce;
-    @GetMapping("/writePage")
+
+    @GetMapping("/page")
     public String showWritePage(){
         return "pages/board/board_index";
     }
 
-    @PostMapping("/writeDo")
+//    Insert
+    @PostMapping("/write")
     public String writeBoard(@ModelAttribute BoardDto dto){
         boardSerivce.insertBoard(dto);
-            return "redirect : showAll";
+            return "redirect:showAll";
     }
-
-    @PostMapping("/showAll")
+//    Select All
+    @GetMapping("/showAll")
     public String showAll(Model model){
         List<BoardDto> result=boardSerivce.findAllLists();
         model.addAttribute("result", result);
         return "pages/board/boardAllList";
     }
 
-
-    @GetMapping("/comment")
-    public String commentBoard(){
-        return "";
+//    Select where Id
+    @GetMapping("/selectId/{board_id}")
+    public String showWhereId(@PathVariable Long board_id, Model model){
+        BoardDto dto=boardSerivce.findById(board_id);
+        model.addAttribute("each", dto);
+        return "pages/board/boardOne";
     }
+
+//    Show all replies by AJAX
+//    @PostMapping("showComments")
+
+
 
 }

@@ -8,8 +8,9 @@
 <th:block layout:fragment="css">
   <link rel="stylesheet" th:href="@{/css/board_index.css}">
 </th:block>
+
 <body>
-<table>
+<table aria-colspan="1">
   <tr>
     <th>번호</th>
     <th>제목</th>
@@ -18,6 +19,8 @@
     <th>작성자</th>
     <th>작성일시</th>
     <th>수정일시</th>
+    <th>비밀번호</th>
+    <th>조회</th>
   </tr>
   <tr th:each="each : ${result}">
     <td th:text="${each.board_id}"></td>
@@ -27,7 +30,10 @@
     <td th:text="${each.writer}"></td>
     <td th:text="${each.create_time}"></td>
     <td th:text="${each.update_time}"></td>
+    <td th:text="${each.board_pw}"></td>
+    <td><button type="button"><a th:href="@{/board/selectId/{board_id}(board_id=${each.board_id})}">상세조회</a></button></td>
   </tr>
 </table>
+
 </body>
 </html>

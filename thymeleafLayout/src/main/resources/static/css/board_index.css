@@ -1,3 +1,9 @@
 body{
     background-color:#ffff00;
 }
+
+input#content{
+    text-align:top;
+    width:200px;
+    height:50px;
+}

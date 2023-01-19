@@ -2,16 +2,15 @@
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{/fragments/common/head :: headFragment}">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="../js/comment.js"></script>
 </head>
-
 <body>
 <div class="header" th:replace="~{/fragments/common/header :: headerFragment}"></div>
-AdminIndexPage
+BoardIndexPage
 
 <th:block layout:fragment="container"></th:block> <!--allow various contents-->
 
 <div class="footer" th:replace="~{/fragments/common/footer :: footerFragment}"></div>
 </body>
-
 </html>

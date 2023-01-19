@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" encoding="UTF-8" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/layouts/boardLayout}">
+<th:block layout:fragment="title">
+    <title>Board</title>
+</th:block>
+<th:block layout:frament="script">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/js/board.js" defer></script>
+</th:block>
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/board_index.css}">
+</th:block>
+<body>
+<table aria-colspan="1">
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>조회수</th>
+        <th>작성자</th>
+        <th>작성일시</th>
+        <th>수정일시</th>
+        <th>비밀번호</th>
+        <th>뒤로가기</th>
+    </tr>
+    <tr>
+        <td th:text="${each.board_id}"></td>
+        <td th:text="${each.title}"></td>
+        <td th:text="${each.content}"></td>
+        <td th:text="${each.hit}"></td>
+        <td th:text="${each.writer}"></td>
+        <td th:text="${each.create_time}"></td>
+        <td th:text="${each.update_time}"></td>
+        <td th:text="${each.board_pw}"></td>
+        <td><button type="button"><a th:href="@{/board/showAll}">뒤로가기</a></button></td>
+    </tr>
+</table>
+<!--reply-->
+<table id="commentsSec">
+    <thead>
+        <tr>
+            <th>내용</th>
+            <th>작성자</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+    </tbody>
+</table>
+
+
+
+<!--reply-->
+
+    <label for="comments">내용</label>
+    <input type="text" id="comments" name="comments"><br>
+
+    <label for="reply_writer">작성자</label>
+    <input type="text" id="reply_writer" name="reply_writer"><br>
+
+    <input type="button" value="글 작성하기" id="writeDo"/>
+    <input type="button" value="전체 댓글 조회" id="showComments">
+
+</body>
+</html>

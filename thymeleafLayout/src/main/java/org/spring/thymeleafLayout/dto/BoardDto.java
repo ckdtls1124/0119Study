@@ -25,7 +25,7 @@ public class BoardDto {
     public static class BoardDtoReq{
         public static BoardEntity toEntity(BoardDto dto){
             BoardEntity entity=new BoardEntity();
-            entity.setBoard_id(dto.getBoard_id());
+//            entity.setBoard_id(dto.getBoard_id());
             entity.setBoard_pw(dto.getBoard_pw());
             entity.setContent(dto.getContent());
             entity.setHit(dto.getHit());

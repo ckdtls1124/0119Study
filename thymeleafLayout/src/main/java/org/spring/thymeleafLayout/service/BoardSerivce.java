@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,5 +27,15 @@ public class BoardSerivce {
             dto.add(BoardDto.BoardDtoResp.toDTO(i));
         }
         return dto;
+    }
+
+    public BoardDto findById(Long number) {
+        Optional<BoardEntity> entity=boardRepo.findById(number);
+        if(entity.isPresent()){
+            BoardDto dto=BoardDto.BoardDtoResp.toDTO(entity.get());
+            return dto;
+        } else {
+            return null;
+        }
     }
 }
