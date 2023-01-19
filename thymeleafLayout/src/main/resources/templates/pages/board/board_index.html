@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" encoding="UTF-8" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/layouts/boardLayout}">
+<th:block layout:fragment="title">
+    <title>Board</title>
+</th:block>
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/board_index.css}">
+</th:block>
+<body>
+<form action="/board/writeDo" method="POST">
+
+            <label>번호</label> <br>
+<!--            <input type="text" id="board_id"><br>-->
+
+            <label for="title">제목</label>
+            <input type="text" id="title"><br>
+
+            <label for="content">내용</label>
+            <input type="text" id="content" style="width:300px;height:200px;font-size:15px;"><br>
+
+            <label for="writer">작성자</label>
+            <input type="text" id="writer"><br>
+
+            <label>조회수</label> <br>
+<!--            <input type="text" id="hit"><br>-->
+
+            <label>작성일시</label> <br>
+<!--            <input type="text" id="create_time"><br>-->
+
+            <label>수정일시</label> <br>
+<!--            <input type="text" id="update_time"><br>-->
+
+            <label for="board_pw">비밀번호</label>
+            <input type="text" id="board_pw"><br>
+
+            <button>글 작성하기</button>
+</form>
+
+
+
+
+
+</body>
+<div layout:fragment="container" class="container"></div>
+</html>
